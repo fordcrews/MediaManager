@@ -53,6 +53,84 @@ The USB Archive Box is designed for photographers, videographers, collectors, an
 * Resilient and traceable storage workflow
 * Ideal for long-term archival at minimal ongoing cost
 
+## Project Layout
+
+```bash
+usb-archive-box/
+├── ingest/
+│   └── ingest.py
+├── db/
+│   └── archive_index.db
+├── ui/
+│   └── webapp.py
+├── static/
+│   └── css/, js/
+├── templates/
+│   └── index.html
+├── spooler/
+│   └── rotate.py
+└── README.md
+```
+
+## Example Flowchart
+
+```mermaid
+flowchart TD
+    A[USB Device Connected] --> B[Auto-Mount Detected]
+    B --> C[Ingest Process Starts]
+    C --> D[User Prompted for Metadata]
+    D --> E[Files Copied to SSD Cache]
+    E --> F[File Info Saved to DB]
+    F --> G[Background Spool to Archive Drive]
+    G --> H[Update Drive Index / UI]
+```
+
+## Example Code Stubs
+
+### ingest.py
+
+```python
+"""
+Monitors USB devices for new media and imports them into the cache directory.
+"""
+def monitor_usb():
+    pass
+
+def ingest_media(device_path, metadata):
+    pass
+```
+
+### rotate.py
+
+```python
+"""
+Spools oldest files to archival USB drives on a scheduled basis.
+"""
+def rotate_oldest_files():
+    pass
+```
+
+### db.py
+
+```python
+"""
+Tracks what files are on which drives and retains metadata.
+"""
+def add_file_record(filename, drive_id, metadata):
+    pass
+
+def get_drive_contents(drive_id):
+    pass
+```
+
+## GitHub Project Ideas
+
+* [ ] USB detection and import script
+* [ ] Web UI file explorer
+* [ ] SQLite drive/media tracker
+* [ ] Archive rotation logic
+* [ ] Label printer support
+
 ## License
 
 MIT License — free to use, fork, and expand.
@@ -60,7 +138,3 @@ MIT License — free to use, fork, and expand.
 ---
 
 Let us know if you're interested in collaborating on this project!
-
-Can you format it to markdown to make it easier to post on github?
-# MediaManager
-Raspberry Media Manager 
